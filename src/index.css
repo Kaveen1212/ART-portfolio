@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Quantum';
+  src: url('./assets/fonts/Quantum.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes numberChangeAnimation {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-number-change {
+  animation: numberChangeAnimation 0.35s forwards;
+}
