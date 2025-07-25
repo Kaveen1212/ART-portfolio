@@ -1,6 +1,16 @@
 @import url('https://fonts.cdnfonts.com/css/canela-trial');
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+@import url("fonts/roboto/stylesheet.css");
 
 /* Add default font classes */
 .font-canela {
   font-family: 'Canela Trial', serif;
+}
+
+@font-face {
+  font-family: 'Burgundia';
+  src: url('./fonts/burgundia.woff2') format('woff2'),
+       url('./fonts/burgundia.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }

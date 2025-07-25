@@ -6,8 +6,14 @@ export default {
   ],
   theme: {
     extend: {
+      letterSpacing: {
+        tight: '-2px',
+      },
       fontFamily: {
         quantum: ['Quantum', 'sans-serif'],
+        'lacquer': ['Lacquer', 'cursive'],
+        'Roboto': ['Roboto', 'sans-serif'],
+        'burgundia': ['Burgundia', 'serif'],
       },
       keyframes: {
         'pop-word': {
