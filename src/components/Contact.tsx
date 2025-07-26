@@ -61,7 +61,7 @@ export default function ContactMe() {
 
   // Ref and inView for center content
   const centerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(centerRef, { amount: 0.5, once: true });
+  const isInView = useInView(centerRef, { amount: 0.5, once: false });
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-8">
@@ -90,7 +90,7 @@ export default function ContactMe() {
             className="flex flex-col items-center mx-2"
             initial="hidden"
             whileInView="visible"
-            viewport={{ amount: 0.5 }}
+            viewport={{ amount: 0.5, once: false }} // <-- not once!
             variants={fadeUp}
           >
             <div className="mb-2">
@@ -101,7 +101,7 @@ export default function ContactMe() {
                 text="CONTACT ME"
                 delay={150}
                 className="text-9xl font-bold tracking-tight"
-                inView={isInView}
+                inView={isInView} // <-- pass inView state
               />
             </div>
           </motion.div>

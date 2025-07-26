@@ -6,3 +6,10 @@ body {
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+html ::selection,
+body ::selection,
+*::selection {
+  background: #abff32 !important;
+  color: #222 !important;
+}

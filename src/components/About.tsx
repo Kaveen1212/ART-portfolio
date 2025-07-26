@@ -1,4 +1,9 @@
 import { motion } from 'framer-motion'
+import SplitText from "./SplitText"
+
+const handleAnimationComplete = () => {
+  console.log('All letters have animated!');
+};
 
 const About = () => {
   return (
@@ -16,29 +21,73 @@ const About = () => {
       </div>
 
         {/* Main topic  */}
-        <div className="text-6xl font-bold tracking-widest z-20 mt-25">ABOUT ME</div>
+        <div className="z-20 mt-25">
+        <SplitText
+          text="ABOUT ME"
+          className="text-6xl font-bold tracking-widest"
+          delay={100}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+      </div>
 
                 {/* pharagrhaphe */}
         <div className="mt-15 text-center z-20 max-w-6xl font-light space-y-15 text-2xl">
-            <div className="block ">Software Engineer - Undergraduate - B.Tech in Software Technology</div>
+            <div className="mt-15 text-center z-20 max-w-6xl font-light space-y-15 text-2xl">
+        <SplitText
+          text="Software Engineer - Undergraduate - B.Tech in Software Technology"
+          className="block"
+          delay={10}
+          duration={1}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+        </div>
 
-            <div className="block text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                An enthusiastic Software Engineering undergraduate at 
-                the University of Vocational Technology, specializing in software 
-                development, system optimization, and scalable web applications. 
-                Proficient in Java, JavaScript, Python, cloud computing, and 
-                database management. Strong problem-solving, analytical, and 
-                AI-driven decision-making skills, with excellent teamwork, leadership, 
-                and communication abilities.
-            </div>
+            {/* Description paragraphs */}
+            <SplitText
+          text="An enthusiastic Software Engineering undergraduate at the University of Vocational Technology, specializing in software development, system optimization, and scalable web applications. Proficient in Java, JavaScript, Python, cloud computing, and database management. Strong problem-solving, analytical, and AI-driven decision-making skills, with excellent teamwork, leadership, and communication abilities."
+          className="block text-left"
+          delay={2}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="left"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
 
-            <div className="block text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                A motivated Software Engineering student skilled in software development, 
-                cloud computing, and system optimization. Proficient in Java, JavaScript, 
-                Python, and databases, with a passion for AI-driven solutions. Strong in 
-                critical thinking, leadership, and collaboration, thriving in fast-paced 
-                environments.
-            </div>
+            <SplitText
+          text="A motivated Software Engineering student skilled in software development, cloud computing, and system optimization. Proficient in Java, JavaScript, Python, and databases, with a passion for AI-driven solutions. Strong in critical thinking, leadership, and collaboration, thriving in fast-paced environments."
+          className="block text-left"
+          delay={2}
+          duration={0.6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="left"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+
             
             {/* icons  */}
             <div className="w-full overflow-hidden mt-50 relative">

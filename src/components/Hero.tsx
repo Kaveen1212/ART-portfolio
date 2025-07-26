@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import SlidingText from "./SlidingText";
 import CircularTextAnimation from "./CircularTextAnimation";
@@ -9,23 +9,12 @@ const SECTION_HEIGHT = 1500;
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
-  const [screenH, setScreenH] = useState<number>(window.innerHeight); // Default to initial height
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenH(window.innerHeight);
-    };
-    handleResize(); // Set on mount
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Always call hooks — even if screenH is 0, give fallback values
-  const opacity = useTransform(scrollY, [screenH * 0.1, screenH * 0.8], [1, 0]);
-  const pointerEvents = useTransform(opacity, (o) => (o < 0.01 ? "none" : "auto"));
 
   const oppacity = useTransform(scrollY, [SECTION_HEIGHT, SECTION_HEIGHT + 500], [1, 0]);
   const backgroundSize = useTransform(scrollY, [0, SECTION_HEIGHT + 500], ["60%", "20%"]);
+  const screenH = window.innerHeight;
+  const opacity = useTransform(scrollY, [screenH * 0.1, screenH * 0.8], [1, 1]);
+  const pointerEvents = useTransform(opacity, (o) => (o < 0.01 ? "none" : "auto"));
 
   const videoYRaw = useTransform(scrollY, [0, 600], [0, -900]);
   const videoOpacityRaw = useTransform(scrollY, [0, 400, 600], [1, 0.7, 0]);
@@ -38,7 +27,7 @@ const Hero: React.FC = () => {
 
   return (
     <motion.section
-      className="w-full h-screen text-black bg-[#F9F8EB] overflow-hidden z-30"
+      className="w-full h-screen text-black bg-white overflow-hidden z-30"
       style={{
         position: "fixed",
         top: 0,
@@ -47,7 +36,7 @@ const Hero: React.FC = () => {
         height: "100vh",
         zIndex: 30,
         opacity,
-        pointerEvents,
+        pointerEvents
       }}
     >
       <div
@@ -57,7 +46,7 @@ const Hero: React.FC = () => {
             linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: "20px 20px",
+          backgroundSize: "20px 20px"
         }}
       ></div>
 
@@ -72,9 +61,9 @@ const Hero: React.FC = () => {
             style={{
               opacity: oppacity,
               backgroundSize,
-              backgroundImage: "url(/hero.png)",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
+              backgroundImage: 'url(/hero.png)',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center'
             }}
           />
         </div>
@@ -87,7 +76,7 @@ const Hero: React.FC = () => {
           height: 200,
           bottom: videoPosition,
           y: videoY,
-          opacity: videoOpacity,
+          opacity: videoOpacity
         }}
       >
         <video
