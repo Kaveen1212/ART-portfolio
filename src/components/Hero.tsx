@@ -27,69 +27,65 @@ const Hero: React.FC = () => {
 
   return (
     <motion.section
-      className="w-full h-screen text-black bg-white overflow-hidden z-30"
+    className="fixed top-0 left-0 w-screen h-screen text-black bg-white overflow-hidden z-0"
+    style={{
+      zIndex: 30,
+      opacity,
+      pointerEvents
+    }}
+  >
+    <div
+      className="absolute inset-0 opacity-40 z-5"
       style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        zIndex: 30,
-        opacity,
-        pointerEvents
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px)
+        `,
+        backgroundSize: "20px 20px"
       }}
-    >
-      <div
-        className="absolute inset-0 opacity-40 z-5"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: "20px 20px"
-        }}
-      ></div>
+    />
 
-      <div className="w-full h-full flex items-center justify-center relative z-10">
-        <CircularTextAnimation />
-        <div className="absolute inset-0 flex items-center z-0 overflow-hidden">
-          <SlidingText />
-        </div>
-        <div className="relative flex flex-col top-10 items-center z-10">
-          <motion.div
-            className="w-[380px] h-[380px] sm:w-[400px] sm:h-[400px] md:w-[550px] md:h-[550px] lg:w-[700px] lg:h-[700px] object-contain z-10"
-            style={{
-              opacity: oppacity,
-              backgroundSize,
-              backgroundImage: 'url(/hero.png)',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center'
-            }}
-          />
-        </div>
+    <div className="w-full h-full flex items-center justify-center relative z-10">
+      <CircularTextAnimation />
+      <div className="absolute inset-0 flex items-center z-0 overflow-hidden">
+        <SlidingText />
       </div>
-
-      <motion.div
-        className="fixed right-10 z-30 shadow-lg rounded-lg overflow-hidden bg-black"
-        style={{
-          width: 350,
-          height: 200,
-          bottom: videoPosition,
-          y: videoY,
-          opacity: videoOpacity
-        }}
-      >
-        <video
-          src="/your-video.mp4"
-          width="350"
-          height="200"
-          controls
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover"
+      <div className="relative flex flex-col top-10 items-center z-10">
+        <motion.div
+          className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] xl:w-[550px] xl:h-[550px] object-contain z-10"
+          style={{
+            opacity: oppacity,
+            backgroundSize,
+            backgroundImage: 'url(/hero.png)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+          }}
         />
-      </motion.div>
+      </div>
+    </div>
+
+    <motion.div
+  className="fixed right-2
+    z-30 shadow-lg rounded-lg overflow-hidden bg-black
+    w-[150px] h-[75px]
+    lg:w-[250px] lg:h-[150px]
+    xl:w-[350px] xl:h-[200px]
+    hidden lg:block"
+  style={{
+    bottom: videoPosition,
+    y: videoY,
+    opacity: videoOpacity
+  }}
+>
+  <video
+    src="/your-video.mp4"
+    controls
+    autoPlay
+    loop
+    muted
+    className="w-full h-full object-cover"
+  />
+</motion.div>
     </motion.section>
   );
 };

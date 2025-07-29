@@ -52,12 +52,12 @@ const ParallaxText: React.FC<ParallaxProps> = ({ children, baseVelocity = 100 })
 
   return (
     <div
-      ref={ref}
-      className="relative overflow-hidden whitespace-nowrap flex flex-nowrap tracking-tight leading-[0.8] m-0 w-full"
-      style={{ scale: scale.get(), opacity: opacity.get() }}
-    >
+  ref={ref}
+  className="relative overflow-hidden whitespace-nowrap flex flex-nowrap tracking-tight leading-[0.8] m-0 w-screen p-0"
+  style={{ scale: scale.get(), opacity: opacity.get() }}
+>
       <div
-        className="absolute left-0 top-0 w-32 h-full z-20 pointer-events-none"
+        className="absolute left-0 top-0 w-12 lg:w-24 xl:w-32 h-full z-20 pointer-events-none"
         style={{
           background:
             "linear-gradient(to right, #F9F8EB 0%, rgba(249, 248, 235, 0.8) 30%, rgba(249, 248, 235, 0.4) 60%, transparent 100%)",
@@ -72,15 +72,18 @@ const ParallaxText: React.FC<ParallaxProps> = ({ children, baseVelocity = 100 })
       />
 
       <motion.div
-        className="font-plaster font-semibold uppercase text-[64px] flex whitespace-nowrap flex-nowrap space-y-10 text-gray-500"
-        style={{ x }}
-      >
-        {Array.from({ length: 12 }).map((_, i) => (
-          <span className="block mr-[30px]" key={i}>
-            {children} {" "}
-          </span>
-        ))}
-      </motion.div>
+  className="font-plaster font-semibold uppercase text-[28px] md:text-[36px] xl:text-[64px] flex whitespace-nowrap text-gray-500"
+  style={{ x }}
+>
+  {Array.from({ length: 12 }).map((_, i) => (
+    <span
+      className="block mr-[10px] md:mr-[20px] xl:mr-[30px]"
+      key={i}
+    >
+      {children}{" "}
+    </span>
+  ))}
+</motion.div>
     </div>
   );
 };

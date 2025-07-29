@@ -95,15 +95,17 @@ const Project = () => {
       style={{ fontFamily: "'Canela Trial', serif" }}
     >
       {/* Header */}
-      <h1 className="absolute top-12 text-6xl font-light tracking-widest text-black">PROJECTS</h1>
+      <h1 className="absolute top-6 left-1/2 -translate-x-1/2 text-3xl lg:text-4xl xl:text-6xl font-light tracking-widest text-black">
+  PROJECTS
+</h1>
 
-      {/* Projects List */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8">
-        {projects.map((project, idx) => (
-          <motion.div
-    key={project.id}
-    className={`relative transition-colors duration-300 ${
-      hoveredIdx === idx ? 'bg-black' : 'bg-transparent'
+{/* Projects List */}
+<div className="relative z-10 w-full max-w-6xl px-2 lg:px-4 xl:px-8">
+  {projects.map((project, idx) => (
+    <motion.div
+      key={project.id}
+      className={`relative transition-colors duration-300 ${
+        hoveredIdx === idx ? 'bg-black' : 'bg-transparent'
       }`}
       onMouseEnter={() => setHoveredIdx(idx)}
       onMouseLeave={() => setHoveredIdx(null)}
@@ -112,57 +114,57 @@ const Project = () => {
       viewport={{ amount: 0.2 }}
       transition={{ type: "spring", stiffness: 60, delay: idx * 0.1 }}
     >
-            <div className="flex items-center justify-between py-6">
-              {/* Icon + Text */}
-              <div className="flex items-center gap-4">
-        <span className="text-2xl">
-          {/* Change SVG color on hover */}
-          {React.isValidElement(project.icon)
-            ? React.cloneElement(project.icon as React.ReactElement<{ fill?: string }>, { fill: hoveredIdx === idx ? '#fff' : '#000' })
-            : null}
-        </span>
-        <span className={`h-8 w-px mx-2 ${hoveredIdx === idx ? 'bg-white' : 'bg-black'}`} />
-        <span className={`text-xl font-normal ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>{project.title}</span>
-        <span className={`mx-4 text-lg ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>—</span>
-        <span className={`text-lg ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>{project.description}</span>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-3 sm:py-6 gap-2">
+        {/* Icon + Text */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <span className="text-lg sm:text-2xl">
+            {/* Change SVG color on hover */}
+            {React.isValidElement(project.icon)
+              ? React.cloneElement(project.icon as React.ReactElement<{ fill?: string }>, { fill: hoveredIdx === idx ? '#fff' : '#000' })
+              : null}
+          </span>
+          <span className={`h-6 sm:h-8 w-px mx-1 sm:mx-2 ${hoveredIdx === idx ? 'bg-white' : 'bg-black'}`} />
+          <span className={`text-base sm:text-xl font-normal ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>{project.title}</span>
+          <span className={`mx-2 sm:mx-4 text-sm sm:text-lg ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>—</span>
+          <span className={`text-sm sm:text-lg ${hoveredIdx === idx ? 'text-white' : 'text-black'}`}>{project.description}</span>
+        </div>
+
+        {/* Button */}
+        <button className={`flex items-center gap-1 sm:gap-2 border rounded-md px-2 py-1 sm:px-4 sm:py-2 mr-0 sm:mr-4 text-xs sm:text-sm font-semibold transition ${
+          hoveredIdx === idx
+            ? 'bg-white text-black border-white'
+            : 'border-black hover:bg-black hover:text-white'
+        }`}>
+          <span className={`text-xs sm:text-base ${hoveredIdx === idx ? 'text-black' : 'text-black'}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-4 h-4 sm:w-5 sm:h-5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8V6a4 4 0 118 0v2m-9 4h10a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1v-5a1 1 0 011-1zm5 3v2" />
+            </svg>
+          </span>
+          CONTACT FOR DETAILS
+        </button>
       </div>
 
-              {/* Button */}
-              <button className={`flex items-center gap-2 border rounded-md px-4 py-2 mr-4 text-sm font-semibold transition ${
-                hoveredIdx === idx
-                  ? 'bg-white text-black border-white'
-                  : 'border-black hover:bg-black hover:text-white'
-              }`}>
-                <span className={`text-base ${hoveredIdx === idx ? 'text-black' : 'text-black'}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" className="w-5 h-5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8V6a4 4 0 118 0v2m-9 4h10a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1v-5a1 1 0 011-1zm5 3v2" />
-                  </svg>
-                </span>
-                CONTACT FOR DETAILS
-              </button>
-            </div>
+      {/* Divider */}
+      {idx < projects.length - 0 &&(
+        <hr className={`border-t ${hoveredIdx === idx ? 'border-white' : 'border-black'}`} />
+      )}
 
-            {/* Divider */}
-            {idx < projects.length - 0 &&(
-              <hr className={`border-t ${hoveredIdx === idx ? 'border-white' : 'border-black'}`} />
-            )}
-
-            {/* Hover Overlay */}
-            {hoveredIdx === idx && (
-              <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/4 w-[300px] h-[400px] border-2 border-black bg-white text-black shadow-2xl flex flex-col items-center justify-center z-30 transition-all duration-300">
-                {project.img && (
-                  <img src={project.img} alt={project.title} className="w-full h-full object-cover mb-4 rounded" />
-                )}
-                <h2 className="text-3xl font-bold mb-2 text-black">{project.title}</h2>
-                <p className="text-lg text-black">{project.description}</p>
-              </div>
-            )}
-          </motion.div>
+      {/* Hover Overlay */}
+      {hoveredIdx === idx && (
+        <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/4 w-[90vw] max-w-xs h-[250px] border-2 border-black bg-white text-black shadow-2xl flex flex-col items-center justify-center z-30 transition-all duration-300">
+          {project.img && (
+            <img src={project.img} alt={project.title} className="w-full h-1/2 object-cover mb-2 rounded" />
+          )}
+          <h2 className="text-lg font-bold mb-1 text-black">{project.title}</h2>
+          <p className="text-sm text-black">{project.description}</p>
+        </div>
+      )}
+    </motion.div>
         ))}
       </div>
 
       {/* Left side box */}
-      <div className="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+      <div className="absolute left-12 top-1/2 -translate-y-1/2 flex-col items-center z-10 hidden lg:flex">
         <div className="border border-black flex flex-col">
           <div className="border-b border-black p-12 flex items-center justify-center">
             <div className="custom-star-container animate-star-float">
@@ -195,7 +197,7 @@ const Project = () => {
       </div>
 
       {/* Right side box */}
-      <div className="absolute right-12 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 flex-col items-center z-10 hidden lg:flex">
         <div className="border border-black flex flex-col">
           <div className="border-b border-black p-8 h-140 w-50 flex items-center justify-center relative">
             <div className="rotate-90 origin-center whitespace-nowrap flex items-center">
@@ -219,16 +221,16 @@ const Project = () => {
       </div>
 
       {/* Corner frames */}
-      <div className="absolute top-8 left-8 z-10">
+      <div className="absolute top-8 left-8 z-10 hidden md:block">
         <div className="border-t border-l border-black w-32 h-32" />
       </div>
-      <div className="absolute top-8 right-8 z-10">
+      <div className="absolute top-8 right-8 z-10 hidden md:block">
         <div className="border-t border-r border-black w-32 h-32" />
       </div>
-      <div className="absolute bottom-8 left-8 z-10">
+      <div className="absolute bottom-8 left-8 z-10 hidden md:block">
         <div className="border-b border-l border-black w-32 h-32" />
       </div>
-      <div className="absolute bottom-8 right-8 z-10">
+      <div className="absolute bottom-8 right-8 z-10 hidden md:block">
         <div className="border-b border-r border-black w-32 h-32" />
       </div>
 

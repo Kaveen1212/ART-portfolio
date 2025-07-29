@@ -65,3 +65,10 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
   /* Add any other floating effect you want */
 }
+
+@font-face {
+  font-family: 'Neumatic';
+  src: url('/fonts/NeumaticCompressed-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}

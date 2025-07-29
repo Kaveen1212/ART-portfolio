@@ -14,6 +14,7 @@ export default {
         'lacquer': ['Lacquer', 'cursive'],
         'Roboto': ['Roboto', 'sans-serif'],
         'burgundia': ['Burgundia', 'serif'],
+        neumatic: ['Neumatic', 'sans-serif'],
       },
       keyframes: {
         'pop-word': {
