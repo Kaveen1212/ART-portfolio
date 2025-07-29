@@ -34,7 +34,6 @@ export default function DecryptedText({
     const [isHovering, setIsHovering] = useState<boolean>(false)
     const [isScrambling, setIsScrambling] = useState<boolean>(false)
     const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set())
-    const [hasAnimated, setHasAnimated] = useState<boolean>(false)
     const containerRef = useRef<HTMLSpanElement>(null)
 
     useEffect(() => {
@@ -159,17 +158,17 @@ export default function DecryptedText({
         useOriginalCharsOnly,
     ])
 
-    useEffect(() => {
+// Removed duplicate hoverProps declaration
+
+useEffect(() => {
     if (animateOn !== 'view') return
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 setIsHovering(true)
-                setHasAnimated(true)
             } else {
                 setIsHovering(false)
-                setHasAnimated(false) // <-- Reset when out of view
             }
         })
     }
