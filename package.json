@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+  "homepage": "https://kaveen1212.github.io/ART-portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@motionone/utils": "^10.18.0",
@@ -17,6 +20,7 @@
     "@tailwindcss/vite": "^4.1.6",
     "@types/react-router-dom": "^5.3.3",
     "framer-motion": "^12.23.7",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.525.0",
     "maath": "^0.10.8",
